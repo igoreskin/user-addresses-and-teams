@@ -1,0 +1,45 @@
+<%= form_for(@user) do |user_builder| %>
+<p>
+  <%= user_builder.label :email %>
+  <%= user_builder.text_field :email %>
+</p>
+
+<%= user_builder.fields_for :addresses do |address_builder| %>
+
+<fieldset>
+  <legend><%= address_builder.object.address_type %></legend>
+  <p>
+    <%= address_builder.label :street_1 %>
+    <%= address_builder.text_field :street_1 %>
+  </p>
+  <p>
+    <%= address_builder.label :street_2 %>
+    <%= address_builder.text_field :street_2 %>
+  </p>
+
+  <%= address_builder.hidden_field :address_type %>
+</fieldset>
+
+<% end %>
+
+<%= user_builder.fields_for :team do |team_builder| %>
+
+<fieldset>
+  <legend>Team (name required, hometown only required for new teams)</legend> 
+  <p>
+    <%= team_builder.label :name %>
+    <%= team_builder.text_field :name %>
+  </p>
+  <p>
+    <%= team_builder.label :hometown %>
+    <%= team_builder.text_field :hometown %>
+  </p>
+
+</fieldset>
+
+<% end %>
+
+<p>
+  <%= user_builder.submit %>
+</p>
+<% end %>

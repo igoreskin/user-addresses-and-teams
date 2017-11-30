@@ -1,0 +1,13 @@
+<h1>User: <%= @user.email %></h1>
+
+<h3>Team: <%= @team.name %></h3>
+<br></br>
+
+<div class="addresses">
+  <% @addresses.each do |address| %>
+    <ul>
+      <li>address.street_1</li>
+      <li>address.street_2</li>
+    </ul>
+  <% end %>
+</div>
